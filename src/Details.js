@@ -15,7 +15,6 @@ class Details extends Component {
     state = { loading: true, showModal: false };
     async componentDidMount() {
         const res = await fetch(
-            // eslint-disable-next-line react/prop-types
             `http://pets-v2.dev-apis.com/pets?id=${this.props.match.params.id}`
         );
         const json = await res.json();
@@ -40,7 +39,7 @@ class Details extends Component {
         if (this.state.loading) {
             return <h2> loading</h2>;
         }
-        const { animal, breed, city, state, description, name, images } = this.state;
+        const { animal, breed, city, state, description, name, images, showModal } = this.state;
         // throw new Error("its broken");
         return (
             <div className="details">
@@ -61,19 +60,19 @@ class Details extends Component {
                     </ThemeContext.Consumer>
                     <p>{description}</p>
 
-                    showModal ?(
-                    <Modal>
-                        <div>
-                            <h1>would you like adopt  {name}</h1>
-                            <div className="buttons">
-                                <button onClick={this.adopt}>Yes</button>
-                                <button onClick={this.toggleModal}>No</button>
+                    {showModal ? (
+                        <Modal>
+                            <div>
+                                <h1>would you like adopt  {name}</h1>
+                                <div className="buttons">
+                                    <button onClick={this.adopt}>Yes</button>
+                                    <button onClick={this.toggleModal}>No</button>
 
+                                </div>
                             </div>
-                        </div>
-                    </Modal>
-                    ):null
-
+                        </Modal>
+                    ) : null
+                    }
                 </div>
 
             </div>
