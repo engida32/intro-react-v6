@@ -1,6 +1,7 @@
 {
   "engines": {
-    "node": "16.13.1"
+    "node": "16.13.1",
+    "npm": "8.3.0"
   },
   "browserslist": [
     "last 2 Chrome versions"
