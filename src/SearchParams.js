@@ -6,7 +6,7 @@ import ThemeContext from "./ThemeContext";
 
 const ANIMALS = ["bird", "cat", "dog", "rabbit", "reptile"];
 const SearchParams = () => {
-    const [theme,setTheme] = useContext(ThemeContext);
+    const [theme, setTheme] = useContext(ThemeContext);
 
     const [location, setLocation] = useState("");
     const [animal, setAnimal] = useState("");

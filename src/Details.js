@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import Carousel from './Carousel';
 import ErrorBoundary from "./ErrorBoundary";
 import ThemeContext from "./ThemeContext";
-
+import Modal from "./Modal";
 
 class Details extends Component {
     // constructor() {
@@ -12,7 +12,7 @@ class Details extends Component {
     //     this.state = { loading: true };
 
     // }
-    state = { loading: true };
+    state = { loading: true, showModal: false };
     async componentDidMount() {
         const res = await fetch(
             // eslint-disable-next-line react/prop-types
@@ -33,6 +33,8 @@ class Details extends Component {
         // })
 
     }
+    toggleModal = () => this.setState({ showModal: !this.state.showModal });
+    adopt = () => (window.location = "http://bit.ly/pet-adopt");
     render() {
         console.log(this.state);
         if (this.state.loading) {
@@ -52,10 +54,26 @@ class Details extends Component {
 
                     <ThemeContext.Consumer>
                         {([theme]) => (
-                            <button style={{ backgroundColor: theme }}>Adobt Me</button>
+                            <button onClick={this.toggleModal} style={{ backgroundColor: theme }}>
+                                Adopt {name}
+                            </button>
                         )}
                     </ThemeContext.Consumer>
                     <p>{description}</p>
+
+                    showModal ?(
+                    <Modal>
+                        <div>
+                            <h1>would you like adopt  {name}</h1>
+                            <div className="buttons">
+                                <button onClick={this.adopt}>Yes</button>
+                                <button onClick={this.toggleModal}>No</button>
+
+                            </div>
+                        </div>
+                    </Modal>
+                    ):null
+
                 </div>
 
             </div>
