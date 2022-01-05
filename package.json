@@ -1,9 +1,6 @@
 {
   "homepage": "https://engida32.github.io/intro-react-v6/",
-  "engines": {
-    "node": "16.13.1",
-    "npm": "8.3.0"
-  },
+ 
   "browserslist": [
     "last 2 Chrome versions"
   ],
